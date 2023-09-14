@@ -1,0 +1,7 @@
+{
+    "table_name": "EXAMPLE",
+    "table_id": "example_id",
+    "example_str": "varchar(50) not null",
+    "example_int": "int not null",
+    "example_not_required": "varchar(50)"
+}

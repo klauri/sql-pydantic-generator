@@ -1,6 +1,7 @@
 from os import listdir, path
 import json
 from database.Connection import Connection
+import sqlite3
 
 def get_table_list(table_dir: str) -> list:
     table_dir_files = listdir(table_dir)
@@ -31,7 +32,7 @@ def generate_create_table_sql(table: dict) -> str:
 def create_tables(table_dir: str):
     tables = get_table_list(table_dir)
     if tables.__len__() == 0: return 'no tables to create'
-    connect = Connection()
+    connect = Connection(connect=sqlite3.connect)
     for table_name in tables:
         print(f'Creating table {table_name} . . .')
         table_json = get_table_json(table_dir, table_name)
@@ -63,4 +64,4 @@ def generate_pydantic_model(table_dir: str, table_name: str):
 
 
 if __name__=='__main__':
-    print(create_tables(table_dir=f'{path.curdir}/tables'))
+    print(create_tables(table_dir=f'{path.curdir}/tables_json'))
