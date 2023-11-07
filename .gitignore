@@ -3,3 +3,4 @@ config/
 __pycache__/
 .env
 test.db
+*.egg-info/
